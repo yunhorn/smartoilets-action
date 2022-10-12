@@ -26,10 +26,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: run repojob
-      run: docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -e OWNER=yunhorn -e REPO=smartoilets --rm ghcr.io/yunhorn/repojob:v0.1.0
-
-    - name: run repojob
-      run: docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -e OWNER=yunhorn -e REPO=fe-sdk --rm ghcr.io/yunhorn/repojob:v0.1.0
-
-    - name: run repojob
-      run: docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -e OWNER=yunhorn -e REPO=projectsmartoilets --rm ghcr.io/yunhorn/repojob:v0.1.0
+      run: |
+        docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -e OWNER=yunhorn -e REPO=smartoilets --rm ghcr.io/yunhorn/repojob:v0.1.0
+        docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -e OWNER=yunhorn -e REPO=fe-sdk --rm ghcr.io/yunhorn/repojob:v0.1.0
+        docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -e OWNER=yunhorn -e REPO=projectsmartoilets --rm ghcr.io/yunhorn/repojob:v0.1.0
