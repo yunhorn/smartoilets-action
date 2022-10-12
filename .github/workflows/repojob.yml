@@ -1,0 +1,26 @@
+# This workflow will build a Java project with Maven
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Clean images
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'  #这是美国时间 +8小时=北京时间
+
+jobs:
+
+  repojob:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: run repojob
+      run: docker run -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} -e OWNER=yunhorn -e REPO=smartoilets --rm ghcr.io/yunhorn/repojob:v0.1.0
+
+    - name: run repojob
+      run: docker run -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} -e OWNER=yunhorn -e REPO=fe-sdk --rm ghcr.io/yunhorn/repojob:v0.1.0
+
+    - name: run repojob
+      run: docker run -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} -e OWNER=yunhorn -e REPO=projectsmartoilets --rm ghcr.io/yunhorn/repojob:v0.1.0
