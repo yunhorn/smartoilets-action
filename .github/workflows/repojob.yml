@@ -1,16 +1,20 @@
 # This workflow will build a Java project with Maven
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
-name: Clean images
+name: RepoJob
 
 on:
+  push:
+    branches:
+      - "main"
   schedule:
-    - cron: '0/10 * * * *'  #这是美国时间 +8小时=北京时间
-    - cron: '0 * * * *'  #这是美国时间 +8小时=北京时间
-    - cron: '10 * * * *'  #这是美国时间 +8小时=北京时间
-    - cron: '20 * * * *'  #这是美国时间 +8小时=北京时间
-    - cron: '30 * * * *'  #这是美国时间 +8小时=北京时间
-    - cron: '40 * * * *'  #这是美国时间 +8小时=北京时间
+    - cron: '0/10 * * * *'
+    - cron: '0/20 * * * *'
+    - cron: '0 * * * *' 
+    - cron: '10 * * * *'
+    - cron: '20 * * * *'
+    - cron: '30 * * * *'
+    - cron: '40 * * * *'
 
 jobs:
 
