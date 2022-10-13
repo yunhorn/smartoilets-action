@@ -27,7 +27,13 @@ jobs:
 
     - name: run repojob
       run: |
-        docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -e OWNER=yunhorn -e REPO=smartoilets --rm ghcr.io/yunhorn/repojob:latest
-        docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -e OWNER=yunhorn -e REPO=fe-sdk --rm ghcr.io/yunhorn/repojob:latest
-        docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -e OWNER=yunhorn -e REPO=projectsmartoilets --rm ghcr.io/yunhorn/repojob:latest
-        docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -e OWNER=yunhorn -e REPO=repojob --rm ghcr.io/yunhorn/repojob:latest
+        docker login ghcr.io -u yunhorn-bot -p ${{ secrets.GITHUB_TOKEN }}
+        docker run -v $PWD/data:/data --rm ghcr.io/yunhorn/repojobdata:latest
+        docker run -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} -v $PWD/data:/data -e OWNER=yunhorn -e REPO=smartoilets --rm ghcr.io/yunhorn/repojob:latest
+        docker run -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} -v $PWD/data:/data -e OWNER=yunhorn -e REPO=fe-sdk --rm ghcr.io/yunhorn/repojob:latest
+        docker run -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} -v $PWD/data:/data -e OWNER=yunhorn -e REPO=projectsmartoilets --rm ghcr.io/yunhorn/repojob:latest
+        docker run -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} -v $PWD/data:/data -e OWNER=yunhorn -e REPO=repojob --rm ghcr.io/yunhorn/repojob:latest
+        docker build -t ghcr.io/yunhorn/repojobdata:latest .
+        docker push ghcr.io/yunhorn/repojobdata:latest
+        docker logout
+        
