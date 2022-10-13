@@ -25,6 +25,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+        # docker build -t ghcr.io/yunhorn/repojobdata:latest .
+        # docker push ghcr.io/yunhorn/repojobdata:latest
+
     - name: run repojob
       run: |
         docker login ghcr.io -u yunhorn-bot -p ${{ secrets.GITHUB_TOKEN }}
@@ -33,7 +36,5 @@ jobs:
         docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -v $PWD/data:/data -e OWNER=yunhorn -e REPO=fe-sdk --rm ghcr.io/yunhorn/repojob:latest
         docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -v $PWD/data:/data -e OWNER=yunhorn -e REPO=projectsmartoilets --rm ghcr.io/yunhorn/repojob:latest
         docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -v $PWD/data:/data -e OWNER=yunhorn -e REPO=repojob --rm ghcr.io/yunhorn/repojob:latest
-        docker build -t ghcr.io/yunhorn/repojobdata:latest .
-        docker push ghcr.io/yunhorn/repojobdata:latest
-        docker logout
+        docker logout ghcr.io
         
