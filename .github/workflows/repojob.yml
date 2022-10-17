@@ -33,8 +33,7 @@ jobs:
         docker login ghcr.io -u yunhorn-bot -p ${{ secrets.GITHUB_TOKEN }}
         docker run -v $PWD/data:/data --rm ghcr.io/yunhorn/repojobdata:latest
         docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -v $PWD/data:/data -e OWNER=yunhorn -e REPO=smartoilets --rm ghcr.io/yunhorn/repojob:latest
-        docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -v $PWD/data:/data -e OWNER=yunhorn -e REPO=fe-sdk --rm ghcr.io/yunhorn/repojob:latest
-        docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -v $PWD/data:/data -e OWNER=yunhorn -e REPO=projectsmartoilets --rm ghcr.io/yunhorn/repojob:latest
+        docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -v $PWD/data:/data -e OWNER=yunhorn -e REPO=smartoilets-front --rm ghcr.io/yunhorn/repojob:latest
         docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -v $PWD/data:/data -e OWNER=yunhorn -e REPO=repojob --rm ghcr.io/yunhorn/repojob:latest
         docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -v $PWD/data:/data -e OWNER=yunhorn -e REPO=watchdog --rm ghcr.io/yunhorn/repojob:latest
         docker logout ghcr.io
