@@ -36,5 +36,6 @@ jobs:
         docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -v $PWD/data:/data -e OWNER=yunhorn -e REPO=fe-sdk --rm ghcr.io/yunhorn/repojob:latest
         docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -v $PWD/data:/data -e OWNER=yunhorn -e REPO=projectsmartoilets --rm ghcr.io/yunhorn/repojob:latest
         docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -v $PWD/data:/data -e OWNER=yunhorn -e REPO=repojob --rm ghcr.io/yunhorn/repojob:latest
+        docker run -e GITHUB_TOKEN=${{ secrets.TOKEN }} -v $PWD/data:/data -e OWNER=yunhorn -e REPO=watchdog --rm ghcr.io/yunhorn/repojob:latest
         docker logout ghcr.io
         
