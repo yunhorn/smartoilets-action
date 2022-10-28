@@ -4,6 +4,7 @@
 name: RepoJob
 
 on:
+  workflow_dispatch:
   workflow_call:
   push:
     branches:
