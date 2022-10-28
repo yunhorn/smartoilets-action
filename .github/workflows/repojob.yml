@@ -4,6 +4,7 @@
 name: RepoJob
 
 on:
+  workflow_call:
   push:
     branches:
       - "main"
@@ -15,6 +16,9 @@ on:
     # - cron: '20 * * * *'
     - cron: '30 * * * *'
     # - cron: '40 * * * *'
+
+
+
 
 jobs:
 
