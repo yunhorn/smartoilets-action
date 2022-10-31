@@ -13,8 +13,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: run drone runner 
+    - name: run drone runner
+      env:
+        UUID: uuidgen |sed 's/-//g'
       run: |
         docker run -it -d -v /var/run/docker.sock:/var/run/docker.sock -e DRONE_RPC_HOST=${{ secrets.DRONE_SERVER }} -e DRONE_RPC_SECRET=c64bab058885900124d31250b6780307 \
-        -e DRONE_RUNNER_NAME=docker-worker-gh -e DRONE_RUNNER_CAPACITY=2 -e TZ=Asia/Shanghai  --name drone drone/drone-runner-docker:1.8.2
+        -e DRONE_RUNNER_NAME=docker-worker-gh-$UUID -e DRONE_RUNNER_CAPACITY=2 -e TZ=Asia/Shanghai  --name drone drone/drone-runner-docker:1.8.2
         sleep 20m
