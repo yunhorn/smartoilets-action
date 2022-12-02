@@ -13,22 +13,22 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - uses: actions/checkout@v3
-    - name: Set up JDK 
-      uses: actions/setup-java@v3
-      with:
-        java-version: 17
-        distribution: 'temurin'
-        cache: 'maven'
+    # - uses: actions/checkout@v3
+    # - name: Set up JDK 
+    #   uses: actions/setup-java@v3
+    #   with:
+    #     java-version: 17
+    #     distribution: 'temurin'
+    #     cache: 'maven'
 
-    - name: Cache Maven packages
-      uses: actions/cache@v2
-      with:
-        path: ~/.m2
-        key: ${{ runner.os }}-m2
-        # key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-        # TODO build cache?
-        restore-keys: ${{ runner.os }}-m2
+    # - name: Cache Maven packages
+    #   uses: actions/cache@v2
+    #   with:
+    #     path: ~/.m2
+    #     key: ${{ runner.os }}-m2
+    #     # key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+    #     # TODO build cache?
+    #     restore-keys: ${{ runner.os }}-m2
 
     - name: run drone runner
       run: |
