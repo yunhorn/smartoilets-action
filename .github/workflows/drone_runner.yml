@@ -37,16 +37,15 @@ jobs:
         docker run -it -d -v /var/run/docker.sock:/var/run/docker.sock -e DRONE_RPC_HOST=${{ secrets.DRONE_SERVER }} -e DRONE_RPC_SECRET=c64bab058885900124d31250b6780307 \
         -e DRONE_RUNNER_NAME=$DRONE_RUNNER_NAME -e DRONE_RUNNER_CAPACITY=2 -e TZ=Asia/Shanghai  --name drone drone/drone-runner-docker:1.8.2
         
-        nohup docker pull maven:3.8.6 & 
-        nohup docker pull alpine/git & 
-        nohup docker pull docker:stable & 
-        nohup docker pull aquasec/trivy:0.34.0 & 
-        nohup docker pull ghcr.io/yunhorn/alpine:3.16.2-tools & 
+        docker run -it -d -v /var/run/docker.sock:/var/run/docker.sock --rm docker:stable docker pull maven:3.8.6
+        docker run -it -d -v /var/run/docker.sock:/var/run/docker.sock --rm docker:stable docker pull distribution/distribution:2.8.1
+        docker run -it -d -v /var/run/docker.sock:/var/run/docker.sock --rm docker:stable docker pull alpine/git
+        docker run -it -d -v /var/run/docker.sock:/var/run/docker.sock --rm docker:stable docker pull aquasec/trivy:0.34.0
+        docker run -it -d -v /var/run/docker.sock:/var/run/docker.sock --rm docker:stable docker pull ghcr.io/yunhorn/alpine:3.16.2-tools
         
-        
-        nohup docker pull registry.cn-hongkong.aliyuncs.com/smartoilets/adoptopenjdk:11.0.11_9-jre-hotspot &
-        nohup docker pull registry.cn-hongkong.aliyuncs.com/smartoilets/adoptopenjdk:11.0.11_9-jre-hotspot &
-        nohup docker pull registry.cn-hongkong.aliyuncs.com/smartoilets/openjdk11-openj9:x86_64-ubuntu-jre-11.0.14.1_1_openj9-0.30.1 &
-        nohup docker pull registry.cn-hongkong.aliyuncs.com/smartoilets/open-liberty:22.0.0.10-kernel-slim-java17-openj9-ubi &
-        
+        docker run -it -d -v /var/run/docker.sock:/var/run/docker.sock --rm docker:stable docker pull registry.cn-hongkong.aliyuncs.com/smartoilets/adoptopenjdk:11.0.11_9-jre-hotspot
+        docker run -it -d -v /var/run/docker.sock:/var/run/docker.sock --rm docker:stable docker pull registry.cn-hongkong.aliyuncs.com/smartoilets/openjdk11-openj9:x86_64-ubuntu-jre-11.0.14.1_1_openj9-0.30.1
+        docker run -it -d -v /var/run/docker.sock:/var/run/docker.sock --rm docker:stable docker pull registry.cn-hongkong.aliyuncs.com/smartoilets/open-liberty:22.0.0.10-kernel-slim-java17-openj9-ubi
+        docker run -it -d -v /var/run/docker.sock:/var/run/docker.sock --rm docker:stable docker pull registry.cn-hongkong.aliyuncs.com/smartoilets/pulsar:2.10.2
+
         sleep 45m
